@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 
 import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -61,6 +62,18 @@ with st.sidebar:
             "Preparación para invertir"
         ]
     )
+
+
+# ============================================================
+# API Key
+# ============================================================
+
+if "GOOGLE_API_KEY" in st.secrets:
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+
+if "GOOGLE_API_KEY" not in os.environ:
+    st.error("No se ha encontrado GOOGLE_API_KEY. Configúrala en los secrets del despliegue.")
+    st.stop()
 
 
 # ============================================================
