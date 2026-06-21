@@ -40,14 +40,6 @@ with st.sidebar:
         ["gemini-2.5-flash-lite", "gemini-2.5-flash"]
     )
 
-    temperature = st.slider(
-        "Temperatura",
-        min_value=0.0,
-        max_value=1.0,
-        value=0.2,
-        step=0.1,
-        help="Para análisis financiero conviene usar valores bajos."
-    )
 
     st.divider()
 
@@ -82,7 +74,7 @@ if "GOOGLE_API_KEY" not in os.environ:
 
 chat_model = ChatGoogleGenerativeAI(
     model=model_name,
-    temperature=temperature
+    temperature=0.20
 )
 
 
